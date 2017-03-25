@@ -1,0 +1,16 @@
+{
+  "name": "eslint-plugin-yacamelcase",
+  "version": "1.0.0",
+  "author": "kohno",
+  "scripts": {
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@gitlab.fdev/misc/eslint-plugin-yacamelcase.git"
+  },
+  "dependencies": {
+    "eslint": "^3.14.1"
+  },
+  "devDependencies": {
+  }
+}
