@@ -8,7 +8,7 @@
 //------------------------------------------------------------------------------
 
 var RuleTester = require("eslint").RuleTester;
-var rule = require("../rule/yacamelcase");
+var rule = require("../rules/yacamelcase");
 
 //------------------------------------------------------------------------------
 // Tests
