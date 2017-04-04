@@ -55,7 +55,7 @@ module.exports = {
         function isUnderscored(name) {
 
             // skip if ignored strings
-            if (config.ignoreStrings && config.ignoreStrings.indexOf(name) >= 0) {
+            if (config.ignoreStrings && (config.ignoreStrings.indexOf(name) >= 0 || config.ignoreStrings.indexOf('_' + name) >= 0)) {
                 return false;
             }
             // if there's an underscore, it might be A_CONSTANT, which is okay

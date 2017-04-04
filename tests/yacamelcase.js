@@ -25,6 +25,10 @@ ruleTester.run("yacamelcase", rule, {
 		{
 			code: "var should_ignored = \"hoge\"; var should_ignored_too = \"hoge\";",
 			options: [{ ignoreStrings: ["should_ignored", "should_ignored_too"]}]
+		},
+		{
+			code: "var _private_var = \"hoge\";",
+			options: [{ ignoreStrings: ["_private_var"]}]
 		}
 
 	],
