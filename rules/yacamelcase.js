@@ -29,6 +29,9 @@ module.exports = {
                         items: {
                             type: "string"
                         }
+                    },
+                    ignorePattern: {
+                        type: "string"
                     }
                 },
                 additionalProperties: false
@@ -45,6 +48,7 @@ module.exports = {
         // contains reported nodes to avoid reporting twice on destructuring with shorthand notation
         const reported = [];
         const ALLOWED_PARENT_TYPES = new Set(["CallExpression", "NewExpression"]);
+        const config = {};
 
         /**
          * Checks if a string contains an underscore and isn't all upper-case
@@ -59,7 +63,7 @@ module.exports = {
                 return false;
             }
             // if there's an underscore, it might be A_CONSTANT, which is okay
-            return name.indexOf("_") > -1 && name !== name.toUpperCase();
+            return !config.ignorePattern.test(name) && name.indexOf("_") > -1 && name !== name.toUpperCase();
         }
 
         /**
@@ -76,7 +80,6 @@ module.exports = {
         }
 
         const options = context.options[0] || {};
-        const config = {};
 
         let properties = options.properties || "";
 
@@ -85,6 +88,9 @@ module.exports = {
         }
 
         config.ignoreStrings = options.ignoreStrings;
+
+        const ignorePattern = new RegExp(options.ignorePattern || "^$");
+        config.ignorePattern = ignorePattern;
 
         return {
 

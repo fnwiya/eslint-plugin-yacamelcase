@@ -29,8 +29,15 @@ ruleTester.run("yacamelcase", rule, {
 		{
 			code: "var _private_var = \"hoge\";",
 			options: [{ ignoreStrings: ["_private_var"]}]
+		},
+		{
+			code: "var o = {bar_baz: 1}",
+			options: [{ ignorePattern: "bar_baz" }]
+		},
+		{
+			code: "var o = {bar_baz: 1, bar_foo: 2}",
+			options: [{ ignorePattern: "bar_.*" }]
 		}
-
 	],
 	invalid: [
 		{
@@ -48,6 +55,16 @@ ruleTester.run("yacamelcase", rule, {
 			errors: [
 				{
 					message: "Identifier 'should_error' is not in camel case.",
+					type: "Identifier"
+				}
+			]
+		},
+		{
+			code: "var o = {should_ignored: 1, no_camelcased: 2}",
+			options: [{ ignorePattern: "should_.*" }],
+			errors: [
+				{
+					message: "Identifier 'no_camelcased' is not in camel case.",
 					type: "Identifier"
 				}
 			]

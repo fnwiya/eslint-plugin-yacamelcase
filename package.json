@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-yacamelcase",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "kohno",
   "scripts": {
     "test": "mocha --timeout 5000 ./tests/*.js",
